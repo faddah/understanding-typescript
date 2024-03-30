@@ -1,4 +1,4 @@
-console.log("js-only.js in da hizzzzzzouse!!!");
+console.log("using-ts.js in da hizzzzzzouse!!!");
 var button = document.querySelector("button");
 var input1 = document.getElementById("num1");
 var input2 = document.getElementById("num2");
