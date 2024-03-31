@@ -1,0 +1,12 @@
+body {
+  font-family: "Apple Gothic", Helvetica, Arial, sans-serif;
+  background-color: cornsilk;
+  margin: 5%;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: navy;
+  margin-top: 50px;
+}
