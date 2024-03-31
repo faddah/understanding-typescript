@@ -1,1 +1,1 @@
-console.log(`it's TypeScript files time, bay-bee!!!`);
+console.log(`it's TypeScript files time, bay-bee!`);
