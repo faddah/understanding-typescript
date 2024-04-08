@@ -1,6 +1,8 @@
 body {
   font-family: "Apple Gothic", Helvetica, Arial, sans-serif;
   background-color: cornsilk;
+  display: flex;
+  flex-direction: column;
   margin: 5%;
   padding: 0;
 }
@@ -25,4 +27,20 @@ li {
   color: navy;
   padding: 0.5rem 0;
   font-size: 1.2rem;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+button {
+  background-color: blue;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
 }
