@@ -20,18 +20,29 @@ const generateError = (message: string, code: number): never => {		// never mean
 
 // Another example of a function that never returns anything is the infinite loop
 // function that never ends
-const infiniteLoop = (): never => {
+const infiniteLoop = (): never => {		// infiniteLoop() // this will run forever
 	while (true) {
 		console.log('This is an infinite loop')
 	}
 }
 
-// infiniteLoop() // this will run forever
+function addNums(a: number, b: number): number | void {
+	if ( a + b > 0) return a + b;
+	return;
+}
 
-const theButton = document.querySelector('button')!;
-theButton.addEventListener('click', () => {
-	console.log('Button clicked!');
-}); // Add a closing parenthesis ')' here
+const theButton = document.querySelector('button')!
+
+function clickHandler(message: string): void {
+	console.log('theButton is Clicked! ' + message);
+}
+
+if (theButton) {
+	// theButton.addEventListener('click', () => {
+	// 	console.log('Button clicked!');
+	// })
+	theButton.addEventListener('click', clickHandler.bind(null, 'You\'re welcome!'))
+};
 
 generateError('An error occurred!', 500); // this will throw an error because i told it to — so there.
 
