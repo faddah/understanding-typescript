@@ -18,3 +18,4 @@ const addAndHandle = (n1, n2, cb) => cb(n1 + n2);
 addAndHandle(10, 20, (result) => console.log(result));
 h3Elm.textContent = addAndHandle(10, 20, (result) => result.toString()).toString();
 divResult.append(h3Elm);
+//# sourceMappingURL=functions.js.map

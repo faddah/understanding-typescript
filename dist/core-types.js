@@ -29,3 +29,4 @@ const displayDiv = document.querySelector('#resultDiv');
 console.log(person);
 displayDiv.innerHTML = `<h2>${person.name} is ${person.age} years old.</h2>`;
 displayDiv.append(list);
+//# sourceMappingURL=core-types.js.map

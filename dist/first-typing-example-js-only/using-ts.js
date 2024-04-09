@@ -9,3 +9,4 @@ button.addEventListener(`click`, () => {
     console.log(add(+input1.value, +input2.value));
     result.textContent = add(+input1.value, +input2.value).toString();
 });
+//# sourceMappingURL=using-ts.js.map

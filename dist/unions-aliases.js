@@ -15,3 +15,4 @@ theDiv.append(combinedNamesElm);
 console.log(combine(30, 26, 'NUM'));
 console.log(combine('30', '26', 'NUM'));
 console.log(combine('Max ', 'Anna', 'STR'));
+//# sourceMappingURL=unions-aliases.js.map

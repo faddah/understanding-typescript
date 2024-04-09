@@ -15,10 +15,20 @@ const infiniteLoop = () => {
         console.log('This is an infinite loop');
     }
 };
+function addNums(a, b) {
+    if (a + b > 0)
+        return a + b;
+    return;
+}
 const theButton = document.querySelector('button');
-theButton.addEventListener('click', () => {
-    console.log('Button clicked!');
-});
+function clickHandler(message) {
+    console.log('theButton is Clicked! ' + message);
+}
+if (theButton) {
+    theButton.addEventListener('click', clickHandler.bind(null, 'You\'re welcome!'));
+}
+;
 generateError('An error occurred!', 500);
 const errorResult = generateError('An error occurred!', 500);
 console.log(errorResult);
+//# sourceMappingURL=app.js.map

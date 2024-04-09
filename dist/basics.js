@@ -15,3 +15,4 @@ const resultPhrase = 'The result is: ';
 addition(number1, number2, printAnswer, resultPhrase);
 const answer = addition(number1, number2, printAnswer, resultPhrase);
 resultDiv.innerHTML = `<h2>Result: ${answer}</h2>`;
+//# sourceMappingURL=basics.js.map
