@@ -1,34 +1,32 @@
 "use strict";
-let userInput;
-let userName;
-userInput = 5;
-userInput = 'faddah';
-if (typeof userInput === 'string') {
-    userName = userInput;
-    console.log(userName, userInput);
+const theName = 'Faddah';
+console.log(theName);
+let age = 63;
+age = 29;
+function addUp(a, b) {
+    let theResult;
+    theResult = a + b;
+    return theResult;
 }
-const generateError = (message, code) => {
-    throw { message: message, errorCode: code };
+const adding = (a, b = 2) => a + b;
+console.log(adding(2, 5));
+const printOutput = output => console.log(output);
+printOutput(adding(5, 2));
+printOutput(adding(20));
+const myButton = document.querySelector('button');
+if (myButton) {
+    myButton.addEventListener('click', event => console.log(event));
+}
+const hobbies = ['Sports', 'Cooking'];
+const activeHobbies = ['Hiking'];
+activeHobbies.push(...hobbies);
+const aPerson = {
+    firstName: 'Faddah',
+    age: 63
 };
-const infiniteLoop = () => {
-    while (true) {
-        console.log('This is an infinite loop');
-    }
-};
-function addNums(a, b) {
-    if (a + b > 0)
-        return a + b;
-    return;
-}
-const theButton = document.querySelector('button');
-function clickHandler(message) {
-    console.log('theButton is Clicked! ' + message);
-}
-if (theButton) {
-    theButton.addEventListener('click', clickHandler.bind(null, 'You\'re welcome!'));
-}
-;
-generateError('An error occurred!', 500);
-const errorResult = generateError('An error occurred!', 500);
-console.log(errorResult);
+const copiedPerson = { ...aPerson };
+console.log(copiedPerson);
+const addAll = (...numbers) => numbers.reduce((curResult, curValue) => curResult + curValue, 0);
+const addedNumbers = addAll(5, 10, 2, 3.7);
+console.log(addedNumbers);
 //# sourceMappingURL=app.js.map
