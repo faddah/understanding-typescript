@@ -1,51 +1,67 @@
-let userInput: unknown; // this is a better choice than 'any' because 
-// it's more specific/restrictive
-// you first have to checkt the TYPE of userInput before you can assign 
-// it to another variable
-let userName: string;
+const theName: string = 'Faddah';
+// theName = 'Max'; // this will throw an error because theName is a const
+console.log(theName);
 
-userInput = 5;
-userInput = 'faddah';
-// userName = userInput; // this will throw an error because userName is
-// a string, and userInput is an unknown
-if (typeof userInput === 'string') {	// this is that type check that makes it work
-	userName = userInput
-	console.log(userName, userInput)	// this will run
+let age: number = 63;
+
+age = 29;
+// var theResult;
+
+function addUp(a: number, b: number) {
+	let theResult;
+	theResult = a + b;
+	return theResult;
 }
 
-const generateError = (message: string, code: number): never => {		// never means that the 
-	// function (in this case, an error throw) will never return anything
-	throw { message: message, errorCode: code }
+// console.log(theResult);
+
+// if (age > 20) {
+// 	let isOld = true;
+// }
+
+// console.log(isOld);
+
+const adding = (a: number, b: number = 2): number => a + b;
+
+console.log(adding(2, 5));
+
+const printOutput: (a: number | string) => void = output => console.log(output);
+
+printOutput(adding(5, 2));
+
+printOutput(adding(20));
+
+const myButton: HTMLButtonElement = document.querySelector('button')!;
+
+if (myButton) {
+	myButton.addEventListener('click', event => console.log(event));
 }
 
-// Another example of a function that never returns anything is the infinite loop
-// function that never ends
-const infiniteLoop = (): never => {		// infiniteLoop() // this will run forever
-	while (true) {
-		console.log('This is an infinite loop')
-	}
+const hobbies: string[] = ['Sports', 'Cooking'];
+const activeHobbies: string[] = ['Hiking'];
+
+activeHobbies.push(...hobbies);
+
+interface Person {
+	firstName: string;
+	age: number;
 }
 
-function addNums(a: number, b: number): number | void {
-	if ( a + b > 0) return a + b;
-	return;
-}
-
-const theButton = document.querySelector('button')!
-
-function clickHandler(message: string): void {
-	console.log('theButton is Clicked! ' + message);
-}
-
-if (theButton) {
-	// theButton.addEventListener('click', () => {
-	// 	console.log('Button clicked!');
-	// })
-	theButton.addEventListener('click', clickHandler.bind(null, 'You\'re welcome!'))
+const aPerson: Person = {
+	firstName: 'Faddah',
+	age: 63
 };
 
-generateError('An error occurred!', 500); // this will throw an error because i told it to — so there.
+const copiedPerson: Person = { ...aPerson };
 
-const errorResult = generateError('An error occurred!', 500);
-console.log(errorResult); // this will not run because the function above will throw an error
+console.log(copiedPerson);
+
+// using spread operator for params in functions
+const addAll = (...numbers: number[]): number => numbers.reduce((curResult: number, curValue: number): number => curResult + curValue, 0);
+
+const addedNumbers = addAll(5, 10, 2, 3.7);
+
+console.log(addedNumbers);
+
+
 
