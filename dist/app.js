@@ -13,6 +13,7 @@ console.log(adding(2, 5));
 const printOutput = output => console.log(output);
 printOutput(adding(5, 2));
 printOutput(adding(20));
+printOutput('hey baba re bop, faddah!');
 const myButton = document.querySelector('button');
 if (myButton) {
     myButton.addEventListener('click', event => console.log(event));
