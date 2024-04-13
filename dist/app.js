@@ -8,7 +8,7 @@ function addUp(a, b) {
     theResult = a + b;
     return theResult;
 }
-const adding = (a, b = 2) => a + b;
+const adding = (a, b = 7.3) => a + b;
 console.log(adding(2, 5));
 const printOutput = output => console.log(output);
 printOutput(adding(5, 2));
@@ -30,4 +30,8 @@ console.log(copiedPerson);
 const addAll = (...numbers) => numbers.reduce((curResult, curValue) => curResult + curValue, 0);
 const addedNumbers = addAll(5, 10, 2, 3.7);
 console.log(addedNumbers);
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
+console.log(hobbies, hobby1, hobby2);
+const { firstName: aName, age: theAge } = aPerson;
+console.log(aName, theAge, aPerson);
 //# sourceMappingURL=app.js.map
