@@ -21,7 +21,6 @@ accounting.addEmployee('Faddah');
 accounting.addEmployee('Darcy');
 accounting.addEmployee('Iris');
 accounting.addEmployee('Casey');
-accounting.employees[2] = 'Allison';
 console.log(accounting);
 accounting.describe();
 accounting.printEmployeeInformation();
