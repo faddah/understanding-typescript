@@ -45,3 +45,10 @@ button {
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
 }
+
+.aButton {
+  margin: 0 0.25rem;
+  white-space: normal;
+  width: 150px;
+  word-wrap: break-word;
+}
