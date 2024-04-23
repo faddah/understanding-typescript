@@ -2,7 +2,7 @@ class Department {
 	// private readonly id: string;
 	// private name: string;
 	// private employees: string[] = [];
-	protected employees: string[] = [];
+	protected employees: string[] = [];	// accessible only to derived classes
 
 	constructor(private readonly id: string, public name: string) {
 		// this.name = n;
@@ -26,7 +26,7 @@ class Department {
 class ITDepartment extends Department {
 	admins: string[];
 
-	constructor(id: string, admins: string[]) {
+	constructor(id: string, public admins: string[]) {
 		super(id, 'IT');
 		this.admins = admins;
 	}
@@ -63,6 +63,11 @@ class AccountingDepartment extends Department {
 		this.employees.push(name);
 	}
 
+	printEmployeeInformation(): void {
+		console.log(`No. of Employees:\t${this.employees.length}`);
+		console.log(this.employees);
+	}
+
 	addReport(text: string) {
 		this.reports.push(text);
 		this.lastReport = text;
@@ -82,7 +87,7 @@ accounting.addEmployee('Iris');
 accounting.addEmployee('Casey');
 accounting.addEmployee('Jasper');
 
-// accounting.employees[2] = 'Allison';
+// accounting.employees[6] = 'Allison'; // prevented from happening by using `protected` keyword on line 5 above.
 
 console.log(accounting);
 accounting.describe();
