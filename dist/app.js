@@ -47,6 +47,10 @@ class AccountingDepartment extends Department {
         }
         this.employees.push(name);
     }
+    printEmployeeInformation() {
+        console.log(`No. of Employees:\t${this.employees.length}`);
+        console.log(this.employees);
+    }
     addReport(text) {
         this.reports.push(text);
         this.lastReport = text;
