@@ -24,7 +24,7 @@ class Department {
 }
 
 class ITDepartment extends Department {
-	admins: string[];
+	// admins: string[];
 
 	constructor(id: string, public admins: string[]) {
 		super(id, 'IT');
