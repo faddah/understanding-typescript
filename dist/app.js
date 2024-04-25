@@ -20,6 +20,7 @@ class ITDepartment extends Department {
     constructor(id, admins) {
         super(id, 'IT');
         this.admins = admins;
+        this.admins = admins;
     }
 }
 const it = new ITDepartment('d2', ['Max', 'Faddah']);
