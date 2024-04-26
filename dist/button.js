@@ -1,8 +1,10 @@
-"use strict";
 const buttons = document.querySelectorAll('.aButton');
-buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        console.log('We clicked a Button!!');
+const buttonClick = () => {
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log('We clicked a Button!!');
+        });
     });
-});
+};
+export { buttonClick };
 //# sourceMappingURL=button.js.map

@@ -1,4 +1,6 @@
 "use strict";
+const buttonClick = require('./button');
+buttonClick();
 class Department {
     constructor(id, name) {
         this.id = id;
