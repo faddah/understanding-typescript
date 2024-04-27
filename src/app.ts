@@ -1,3 +1,9 @@
+// const buttonClick = require('./button');
+import { buttonClick } from "./button.js";
+import test from "./test.js";
+buttonClick();
+test();
+
 class Department {
 	// private readonly id: string;
 	// private name: string;
