@@ -1,16 +1,16 @@
 "use strict";
-let userInput;
-let userName;
+var userInput;
+var userName;
 userInput = 5;
 userInput = 'faddah';
 if (typeof userInput === 'string') {
     userName = userInput;
     console.log(userName, userInput);
 }
-const generateError = (message, code) => {
+var generateError = function (message, code) {
     throw { message: message, errorCode: code };
 };
-const infiniteLoop = () => {
+var infiniteLoop = function () {
     while (true) {
         console.log('This is an infinite loop');
     }
@@ -20,7 +20,7 @@ function addNums(a, b) {
         return a + b;
     return;
 }
-const theButton = document.querySelector('button');
+var theButton = document.querySelector('button');
 function clickHandler(message) {
     console.log('theButton is Clicked! ' + message);
 }
@@ -29,6 +29,6 @@ if (theButton) {
 }
 ;
 generateError('An error occurred!', 500);
-const errorResult = generateError('An error occurred!', 500);
+var errorResult = generateError('An error occurred!', 500);
 console.log(errorResult);
 //# sourceMappingURL=old-app.js.map

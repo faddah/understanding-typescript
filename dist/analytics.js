@@ -1,7 +1,7 @@
 "use strict";
 console.log('Analytics is running & will send soon...');
-let logged;
-const sendAnalytics = (data) => {
+var logged;
+var sendAnalytics = function (data) {
     console.log(data);
     logged = true;
     console.log(logged);
