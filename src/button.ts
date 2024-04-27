@@ -1,7 +1,12 @@
 const buttons: NodeListOf<Element> = document.querySelectorAll('.aButton');
 
-buttons.forEach(button => {
-	button.addEventListener('click', () => {
-		console.log('We clicked a Button!!');
+const buttonClick = (): void => {
+	buttons.forEach(button => {
+		button.addEventListener('click', () => {
+			console.log('We clicked a Button!!');
+		});
 	});
-});
+};
+
+export { buttonClick };
+
