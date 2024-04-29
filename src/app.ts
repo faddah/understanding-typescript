@@ -4,19 +4,28 @@ import test from "./test.js";
 buttonClick();
 test();
 
-class Department {
+abstract class Department {
+	static fiscalYear = 2024;
 	// private readonly id: string;
 	// private name: string;
 	// private employees: string[] = [];
 	protected employees: string[] = [];	// accessible only to derived classes
 
-	constructor(private readonly id: string, public name: string) {
+	constructor(protected readonly id: string, public name: string) {
 		// this.name = n;
+		// console.log(this.fiscalYear);  // <= WRONG!! static properties are accessed using the class name, 'Department'
+		console.log(Department.fiscalYear); // <= CORRECT!!
 	}
 
-	describe(this: Department) {
-		console.log(`Department:\t\t\t(${this.id}):\t${this.name}`);
+	static createEmployee(name: string) {
+		return { name: name };
 	}
+
+	// describe(this: Department): void {
+	// console.log(`Department:\t\t\t(${this.id}):\t${this.name}`);
+	// }
+
+	abstract describe(this: Department): void;
 
 	addEmployee(employee: string) {
 		this.employees.push(employee);
@@ -36,7 +45,14 @@ class ITDepartment extends Department {
 		super(id, 'IT');
 		this.admins = admins;
 	}
+
+	describe() {
+		console.log(`IT Department — ID:\t\t${this.name}:\t(${this.id})`);
+	}
 }
+
+const employee1 = Department.createEmployee('Floobie');
+console.log(employee1);
 
 const it = new ITDepartment('d2', ['Max', 'Faddah']);
 
@@ -59,7 +75,12 @@ class AccountingDepartment extends Department {
 
 	constructor(id: string, private reports: string[]) {
 		super(id, 'Accounting');
-		this.lastReport = reports[reports.length - 1];
+		// this.lastReport = reports[reports.length - 1];
+		this.lastReport = reports[0];
+	}
+
+	describe(): void {
+		console.log(`Accounting Department — ID:\t\t${this.name}:\t(${this.id})`);
 	}
 
 	addEmployee(name: string) {
@@ -108,6 +129,7 @@ accounting.addReport('Uh-oh, something went wrong...!');
 accounting.mostRecentReport = 'acctgRpt5';
 console.log(accounting.mostRecentReport);
 accounting.printReports();
+accounting.describe();
 
 
 // const accountingCopy = { name: "accountingCopy", describe: accounting.describe };
