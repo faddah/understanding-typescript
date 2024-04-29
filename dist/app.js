@@ -22,9 +22,10 @@ var Department = (function () {
         this.id = id;
         this.name = name;
         this.employees = [];
+        console.log(Department.fiscalYear);
     }
-    Department.prototype.describe = function () {
-        console.log("Department:\t\t\t(".concat(this.id, "):\t").concat(this.name));
+    Department.createEmployee = function (name) {
+        return { name: name };
     };
     Department.prototype.addEmployee = function (employee) {
         this.employees.push(employee);
@@ -33,6 +34,7 @@ var Department = (function () {
         console.log("No. of Employees:\t".concat(this.employees.length));
         console.table(this.employees);
     };
+    Department.fiscalYear = 2024;
     return Department;
 }());
 var ITDepartment = (function (_super) {
@@ -43,15 +45,20 @@ var ITDepartment = (function (_super) {
         _this.admins = admins;
         return _this;
     }
+    ITDepartment.prototype.describe = function () {
+        console.log("IT Department \u2014 ID:\t\t".concat(this.name, ":\t(").concat(this.id, ")"));
+    };
     return ITDepartment;
 }(Department));
+var employee1 = Department.createEmployee('Floobie');
+console.log(employee1);
 var it = new ITDepartment('d2', ['Max', 'Faddah']);
 var AccountingDepartment = (function (_super) {
     __extends(AccountingDepartment, _super);
     function AccountingDepartment(id, reports) {
         var _this = _super.call(this, id, 'Accounting') || this;
         _this.reports = reports;
-        _this.lastReport = reports[reports.length - 1];
+        _this.lastReport = reports[0];
         return _this;
     }
     Object.defineProperty(AccountingDepartment.prototype, "mostRecentReport", {
@@ -70,6 +77,9 @@ var AccountingDepartment = (function (_super) {
         enumerable: false,
         configurable: true
     });
+    AccountingDepartment.prototype.describe = function () {
+        console.log("Accounting Department \u2014\u00A0ID:\t\t".concat(this.name, ":\t(").concat(this.id, ")"));
+    };
     AccountingDepartment.prototype.addEmployee = function (name) {
         if (name === 'Jasper') {
             return;
@@ -106,4 +116,5 @@ accounting.addReport('Uh-oh, something went wrong...!');
 accounting.mostRecentReport = 'acctgRpt5';
 console.log(accounting.mostRecentReport);
 accounting.printReports();
+accounting.describe();
 //# sourceMappingURL=app.js.map
