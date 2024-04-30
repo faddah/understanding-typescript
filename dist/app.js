@@ -78,7 +78,7 @@ var AccountingDepartment = (function (_super) {
         configurable: true
     });
     AccountingDepartment.prototype.describe = function () {
-        console.log("Accounting Department \u2014\u00A0ID:\t\t".concat(this.name, ":\t(").concat(this.id, ")"));
+        console.log("Accounting Department \u2014 ID:\t\t".concat(this.name, ":\t(").concat(this.id, ")"));
     };
     AccountingDepartment.prototype.addEmployee = function (name) {
         if (name === 'Jasper') {
