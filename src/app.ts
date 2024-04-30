@@ -80,7 +80,7 @@ class AccountingDepartment extends Department {
 	}
 
 	describe(): void {
-		console.log(`Accounting Department — ID:\t\t${this.name}:\t(${this.id})`);
+		console.log(`Accounting Department — ID:\t\t${this.name}:\t(${this.id})`);
 	}
 
 	addEmployee(name: string) {
