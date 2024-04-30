@@ -58,6 +58,7 @@ const it = new ITDepartment('d2', ['Max', 'Faddah']);
 
 class AccountingDepartment extends Department {
 	private lastReport: string;
+	private static instance: AccountingDepartment;
 
 	get mostRecentReport() {
 		if (this.lastReport) {
@@ -73,10 +74,18 @@ class AccountingDepartment extends Department {
 		this.addReport(value);
 	}
 
-	constructor(id: string, private reports: string[]) {
+	private constructor(id: string, private reports: string[]) {
 		super(id, 'Accounting');
 		// this.lastReport = reports[reports.length - 1];
 		this.lastReport = reports[0];
+	}
+
+	static getInstance() {	// Singleton pattern
+		if (this.instance) {
+			return this.instance;
+		}
+		this.instance = new AccountingDepartment('d2', []);	// this is the only place where we can create a new instance of this class name {
+		return this.instance;
 	}
 
 	describe(): void {
@@ -105,7 +114,12 @@ class AccountingDepartment extends Department {
 	}
 }
 
-const accounting = new AccountingDepartment('d1', ['acctgRpt1', 'acctgRpt2', 'acctgRpt3']);
+// const accounting = new AccountingDepartment('d1', ['acctgRpt1', 'acctgRpt2', 'acctgRpt3']);  // <= OLD WAY, before Singleton pattern
+const accounting = AccountingDepartment.getInstance(); // <= NEW WAY, using Singleton pattern, private constructor & static getInstance() method.
+const accounting2 = AccountingDepartment.getInstance(); // <= NEW WAY, using Singleton pattern, private constructor & static getInstance() method.
+
+console.log(accounting, accounting2);
+console.log(`Are accounting and accounting2 the same?: ${accounting === accounting2}`);
 
 accounting.addEmployee('Max');
 accounting.addEmployee('Faddah');
