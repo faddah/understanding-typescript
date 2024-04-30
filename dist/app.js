@@ -2,6 +2,12 @@ import { buttonClick } from "./button.js";
 import test from "./test.js";
 buttonClick();
 test();
+var add;
+add = function (n1, n2) { return n1 + n2; };
+console.log("AddFnType result: ".concat(add(5, 2)));
+var addEmUp;
+addEmUp = function (n1, n2) { return n1 + n2; };
+console.log("AddFnInterface result: ".concat(addEmUp(8, 1)));
 var thePerson = (function () {
     function thePerson(n) {
         this.age = 63;
