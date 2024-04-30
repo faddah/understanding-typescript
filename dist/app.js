@@ -77,6 +77,13 @@ var AccountingDepartment = (function (_super) {
         enumerable: false,
         configurable: true
     });
+    AccountingDepartment.getInstance = function () {
+        if (this.instance) {
+            return this.instance;
+        }
+        this.instance = new AccountingDepartment('d2', []);
+        return this.instance;
+    };
     AccountingDepartment.prototype.describe = function () {
         console.log("Accounting Department \u2014 ID:\t\t".concat(this.name, ":\t(").concat(this.id, ")"));
     };
@@ -99,7 +106,10 @@ var AccountingDepartment = (function (_super) {
     };
     return AccountingDepartment;
 }(Department));
-var accounting = new AccountingDepartment('d1', ['acctgRpt1', 'acctgRpt2', 'acctgRpt3']);
+var accounting = AccountingDepartment.getInstance();
+var accounting2 = AccountingDepartment.getInstance();
+console.log(accounting, accounting2);
+console.log("Are accounting and accounting2 the same?: ".concat(accounting === accounting2));
 accounting.addEmployee('Max');
 accounting.addEmployee('Faddah');
 accounting.addEmployee('Darcy');
