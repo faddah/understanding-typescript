@@ -3,6 +3,8 @@ body {
   background-color: cornsilk;
   display: flex;
   flex-direction: column;
+  justify-content: center; Horizontal centering
+  align-items: center; /* Vertical centering */
   margin: 5%;
   padding: 0;
 }
@@ -14,9 +16,9 @@ h3 {
   color: navy;
 }
 
-h1 {
+/* h1 {
   margin-top: 50px;
-}
+} */
 
 ul {
   margin-top: 2rem;
@@ -36,8 +38,8 @@ li {
 }
 
 button {
-  background-color: blue;
   border: none;
+  background-color: blue;
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(135, 206, 250, 0.75);
   color: cornsilk;
