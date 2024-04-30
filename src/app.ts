@@ -4,13 +4,35 @@ import test from "./test.js";
 buttonClick();
 test();
 
-interface Greetable {
-	readonly name: string; // can set readonly on interfaces, but not public or private
+// How to do Functions in TS as a Type
+type AddFnType = (a: number, b: number) => number;
+let add: AddFnType;
+add = (n1: number, n2: number) => n1 + n2;
+console.log(`AddFnType result: ${add(5, 2)}`);
+
+// How to do Functions in TS as an Interface
+interface AddFnInterface {
+	(a: number, b: number): number;
+}
+let addEmUp: AddFnInterface;
+addEmUp = (n1: number, n2: number) => n1 + n2;
+console.log(`AddFnInterface result: ${addEmUp(8, 1)}`);
+
+
+interface Named {
+	readonly name?: string;
+	// outputName?: string;
+}
+
+interface Greetable extends Named { // You can extend interfaces from other interfaces, and even multiple interfaces
+	// readonly name: string; // can set readonly on interfaces, but not public or private
 	// Can also use readonly on Type's, but not public or private
 	// age: number;
-
 	greet(phrase: string): void;
 }
+
+// The other way to do the above is interface Greetable, Named { ... }
+// Classes can only inherit from one class, but interfaces can be implemented from multiple interfaces
 
 class thePerson implements Greetable {
 	name: string;
