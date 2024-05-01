@@ -81,11 +81,12 @@ class AccountingDepartment extends Department {
 	}
 
 	static getInstance() {	// Singleton pattern
-		if (this.instance) {
-			return this.instance;
-		}
-		this.instance = new AccountingDepartment('d2', []);	// this is the only place where we can create a new instance of this class name {
-		return this.instance;
+		// if (this.instance) {
+		// 	return this.instance;
+		// }
+		// this.instance = new AccountingDepartment('d2', []);	// this is the only place where we can create a new instance of this class name {
+		// return this.instance;
+		return this.instance ? this.instance : this.instance = new AccountingDepartment('d2', []);
 	}
 
 	describe(): void {
