@@ -78,11 +78,7 @@ var AccountingDepartment = (function (_super) {
         configurable: true
     });
     AccountingDepartment.getInstance = function () {
-        if (this.instance) {
-            return this.instance;
-        }
-        this.instance = new AccountingDepartment('d2', []);
-        return this.instance;
+        return this.instance ? this.instance : this.instance = new AccountingDepartment('d2', []);
     };
     AccountingDepartment.prototype.describe = function () {
         console.log("Accounting Department \u2014 ID:\t\t".concat(this.name, ":\t(").concat(this.id, ")"));
