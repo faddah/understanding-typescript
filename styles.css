@@ -57,8 +57,9 @@ button {
 
 .type-cast {
 	background: dodgerblue;
-	border: 2px solid dodgerblue;
+	border: 5px solid navy;
 	border-radius: 20px;
+	box-shadow: 5px 5px 10px darkblue;
 	display: flex;
 	flex-direction: column;
 	margin: 5% auto;
@@ -74,4 +75,8 @@ button {
 	font-size: 2rem;
 	justify-content: center;
 	margin: 3% 0;
+}
+
+#message-output {
+	height: 2.25rem;
 }
