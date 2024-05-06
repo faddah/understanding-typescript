@@ -54,3 +54,24 @@ button {
   width: 150px;
   word-wrap: break-word;
 }
+
+.type-cast {
+	background: dodgerblue;
+	border: 2px solid dodgerblue;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	margin: 5% auto;
+	padding: 4rem;
+}
+
+.type-cast
+	label,
+	#user-input,
+	#message-output {
+	align-text: center;
+	color: black;
+	font-size: 2rem;
+	justify-content: center;
+	margin: 3% 0;
+}
