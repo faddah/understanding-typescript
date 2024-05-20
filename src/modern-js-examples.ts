@@ -51,12 +51,12 @@ interface Person {
 	age: number;
 }
 
-const aPerson: Person = {
+const thePerson: Person = {
 	firstName: 'Faddah',
 	age: 63
 };
 
-const copiedPerson: Person = { ...aPerson };
+const copiedPerson: Person = { ...thePerson };
 
 console.log(copiedPerson);
 
@@ -71,9 +71,9 @@ const [hobby1, hobby2, ...remainingHobbies] = hobbies;
 
 console.log(hobbies, hobby1, hobby2);
 
-const { firstName: aName, age: theAge } = aPerson;
+const { firstName: aName, age: theAge } = thePerson;
 
-console.log(aName, theAge, aPerson);
+console.log(aName, theAge, thePerson);
 
 
 
