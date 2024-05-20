@@ -1,9 +1,9 @@
-var paragraph = document.querySelector('p');
-var userInputElement = document.getElementById('user-input');
-var InputFieldFunc = function () {
+const paragraph = document.querySelector('p');
+const userInputElement = document.getElementById('user-input');
+const InputFieldFunc = () => {
     if (userInputElement)
         userInputElement.value = "Hi there!";
-    userInputElement.addEventListener('keyup', function (event) {
+    userInputElement.addEventListener('keyup', (event) => {
         userInputElement.value ? paragraph.textContent = userInputElement.value : paragraph.textContent = "";
     });
 };

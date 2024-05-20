@@ -1,57 +1,37 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var theName = 'Faddah';
+const theName = 'Faddah';
 console.log(theName);
-var age = 63;
+let age = 63;
 age = 29;
 function addUp(a, b) {
-    var theResult;
+    let theResult;
     theResult = a + b;
     return theResult;
 }
-var adding = function (a, b) {
-    if (b === void 0) { b = 7.3; }
-    return a + b;
-};
+const adding = (a, b = 7.3) => a + b;
 console.log(adding(2, 5));
-var printOutput = function (output) { return console.log(output); };
+const printOutput = output => console.log(output);
 printOutput(adding(5, 2));
 printOutput(adding(20));
 printOutput('hey baba re bop, faddah!');
-var myButton = document.querySelector('button');
+const myButton = document.querySelector('button');
 if (myButton) {
-    myButton.addEventListener('click', function (event) { return console.log(event); });
+    myButton.addEventListener('click', event => console.log(event));
 }
-var hobbies = ['Sports', 'Cooking'];
-var activeHobbies = ['Hiking'];
-activeHobbies.push.apply(activeHobbies, hobbies);
-var aPerson = {
+const hobbies = ['Sports', 'Cooking'];
+const activeHobbies = ['Hiking'];
+activeHobbies.push(...hobbies);
+const thePerson = {
     firstName: 'Faddah',
     age: 63
 };
-var copiedPerson = __assign({}, aPerson);
+const copiedPerson = { ...thePerson };
 console.log(copiedPerson);
-var addAll = function () {
-    var numbers = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        numbers[_i] = arguments[_i];
-    }
-    return numbers.reduce(function (curResult, curValue) { return curResult + curValue; }, 0);
-};
-var addedNumbers = addAll(5, 10, 2, 3.7);
+const addAll = (...numbers) => numbers.reduce((curResult, curValue) => curResult + curValue, 0);
+const addedNumbers = addAll(5, 10, 2, 3.7);
 console.log(addedNumbers);
-var hobby1 = hobbies[0], hobby2 = hobbies[1], remainingHobbies = hobbies.slice(2);
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
 console.log(hobbies, hobby1, hobby2);
-var aName = aPerson.firstName, theAge = aPerson.age;
-console.log(aName, theAge, aPerson);
+const { firstName: aName, age: theAge } = thePerson;
+console.log(aName, theAge, thePerson);
 //# sourceMappingURL=modern-js-examples.js.map

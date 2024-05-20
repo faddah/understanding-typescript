@@ -1,76 +1,69 @@
-var _a;
-console.log("it's advanced TS feature time, bay-bee!");
+console.log(`it's advanced TS feature time, bay-bee!`);
 import { buttonClick } from "./button.js";
 import test from "./test.js";
 buttonClick();
 test();
-var paragraph = document.querySelector('p');
-var paraById = document.getElementById('message-output');
-var userInputElement = document.getElementById('user-input');
-var e1 = {
+const paragraph = document.querySelector('p');
+const paraById = document.getElementById('message-output');
+const userInputElement = document.getElementById('user-input');
+const e1 = {
     name: "Faddah",
     privileges: ["create-server"],
     startDate: new Date(),
 };
 console.table(e1);
-var e2 = {
+const e2 = {
     name: "Faddah",
     privileges: ["super-admin"],
     startDate: new Date(),
 };
 console.table(e2);
-var uni;
+let uni;
 function add(a, b) {
     return (typeof a === "string" || typeof b === "string") ? a.toString() + b.toString() : a + b;
 }
-var result = add(5, 3);
+const result = add(5, 3);
 console.log(result);
-var result2 = add('Faddah', ' Wolf');
+const result2 = add('Faddah', ' Wolf');
 console.log(result2.split(' '));
-var fetchedUserData = {
+const fetchedUserData = {
     id: "u1",
     name: "Faddah",
     job: { title: "CEO", description: "EatMeBumCo" }
 };
-console.log("Job Title: ".concat((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 0 : fetchedUserData.job) === null || _a === void 0 ? void 0 : _a.title));
-var theInput = '';
-var storedData = theInput !== null && theInput !== void 0 ? theInput : 'DEFAULT';
-console.log("The Input: ".concat(storedData));
+console.log(`Job Title: ${fetchedUserData?.job?.title}`);
+const theInput = '';
+const storedData = theInput ?? 'DEFAULT';
+console.log(`The Input: ${storedData}`);
 function printEmployeeInformation(emp) {
-    console.log("Name: ".concat(emp.name));
+    console.log(`Name: ${emp.name}`);
     if ("privileges" in emp)
-        console.log("Privileges: ".concat(emp.privileges));
+        console.log(`Privileges: ${emp.privileges}`);
     if ("startDate" in emp)
-        console.log("Start Date: ".concat(emp.startDate));
+        console.log(`Start Date: ${emp.startDate}`);
 }
-var e3 = {
+const e3 = {
     name: "Faddah",
     privileges: ["super-admin"],
     startDate: new Date(),
 };
 printEmployeeInformation(e1);
 printEmployeeInformation(e3);
-var Car = (function () {
-    function Car() {
-    }
-    Car.prototype.drive = function () {
+class Car {
+    drive() {
         console.log("Driving...");
-    };
-    return Car;
-}());
-var Truck = (function () {
-    function Truck() {
     }
-    Truck.prototype.drive = function () {
+}
+class Truck {
+    drive() {
         console.log("Driving a truck...");
-    };
-    Truck.prototype.loadCargo = function (amount) {
-        console.log("Loading cargo...".concat(amount));
-    };
-    return Truck;
-}());
-var v1 = new Car();
-var v2 = new Truck();
+    }
+    loadCargo(amount) {
+        console.log(`Loading cargo...${amount}`);
+    }
+}
+const v1 = new Car();
+const v2 = new Truck();
 function useVehicle(vehicle) {
     vehicle.drive();
     if (vehicle instanceof Truck)
@@ -79,7 +72,7 @@ function useVehicle(vehicle) {
 useVehicle(v1);
 useVehicle(v2);
 function moveAnimal(animal) {
-    var speed;
+    let speed;
     switch (animal.type) {
         case "bird":
             speed = animal.flyingSpeed;
@@ -88,18 +81,18 @@ function moveAnimal(animal) {
             speed = animal.runningSpeed;
             break;
     }
-    console.log("The ".concat(animal.type, " is moving at a speed of ").concat(speed, " kph."));
+    console.log(`The ${animal.type} is moving at a speed of ${speed} kph.`);
 }
 moveAnimal({ type: 'bird', flyingSpeed: 10 });
 if (userInputElement)
     userInputElement.value = "Hi there!";
-var outputInput = function () {
-    userInputElement.addEventListener('keyup', function (event) {
+const outputInput = () => {
+    userInputElement.addEventListener('keyup', (event) => {
         userInputElement.value ? paragraph.textContent = userInputElement.value : paragraph.textContent = "";
     });
 };
 outputInput();
-var errorBag = {
+const errorBag = {
     email: "Not a valid email!",
     username: "Must start with a capital character!",
 };

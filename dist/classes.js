@@ -1,111 +1,85 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 import { buttonClick } from "./button.js";
 import test from "./test.js";
 buttonClick();
 test();
-var Department = (function () {
-    function Department(id, name) {
+class Department {
+    constructor(id, name) {
         this.id = id;
         this.name = name;
         this.employees = [];
         console.log(Department.fiscalYear);
     }
-    Department.createEmployee = function (name) {
+    static createEmployee(name) {
         return { name: name };
-    };
-    Department.prototype.addEmployee = function (employee) {
+    }
+    addEmployee(employee) {
         this.employees.push(employee);
-    };
-    Department.prototype.printEmployeeInformation = function () {
-        console.log("No. of Employees:\t".concat(this.employees.length));
+    }
+    printEmployeeInformation() {
+        console.log(`No. of Employees:\t${this.employees.length}`);
         console.table(this.employees);
-    };
-    Department.fiscalYear = 2024;
-    return Department;
-}());
-var ITDepartment = (function (_super) {
-    __extends(ITDepartment, _super);
-    function ITDepartment(id, admins) {
-        var _this = _super.call(this, id, 'IT') || this;
-        _this.admins = admins;
-        _this.admins = admins;
-        return _this;
     }
-    ITDepartment.prototype.describe = function () {
-        console.log("IT Department \u2014 ID:\t\t".concat(this.name, ":\t(").concat(this.id, ")"));
-    };
-    return ITDepartment;
-}(Department));
-var employee1 = Department.createEmployee('Floobie');
+}
+Department.fiscalYear = 2024;
+class ITDepartment extends Department {
+    constructor(id, admins) {
+        super(id, 'IT');
+        this.admins = admins;
+        this.admins = admins;
+    }
+    describe() {
+        console.log(`IT Department — ID:\t\t${this.name}:\t(${this.id})`);
+    }
+}
+const employee1 = Department.createEmployee('Floobie');
 console.log(employee1);
-var it = new ITDepartment('d2', ['Max', 'Faddah']);
-var AccountingDepartment = (function (_super) {
-    __extends(AccountingDepartment, _super);
-    function AccountingDepartment(id, reports) {
-        var _this = _super.call(this, id, 'Accounting') || this;
-        _this.reports = reports;
-        _this.lastReport = reports[0];
-        return _this;
+const it = new ITDepartment('d2', ['Max', 'Faddah']);
+class AccountingDepartment extends Department {
+    get mostRecentReport() {
+        if (this.lastReport) {
+            return this.lastReport;
+        }
+        throw new Error('No report found.');
     }
-    Object.defineProperty(AccountingDepartment.prototype, "mostRecentReport", {
-        get: function () {
-            if (this.lastReport) {
-                return this.lastReport;
-            }
-            throw new Error('No report found.');
-        },
-        set: function (value) {
-            if (!value) {
-                throw new Error('Please pass in a valid value!');
-            }
-            this.addReport(value);
-        },
-        enumerable: false,
-        configurable: true
-    });
-    AccountingDepartment.getInstance = function () {
+    set mostRecentReport(value) {
+        if (!value) {
+            throw new Error('Please pass in a valid value!');
+        }
+        this.addReport(value);
+    }
+    constructor(id, reports) {
+        super(id, 'Accounting');
+        this.reports = reports;
+        this.lastReport = reports[0];
+    }
+    static getInstance() {
         return this.instance ? this.instance : this.instance = new AccountingDepartment('d2', []);
-    };
-    AccountingDepartment.prototype.describe = function () {
-        console.log("Accounting Department \u2014 ID:\t\t".concat(this.name, ":\t(").concat(this.id, ")"));
-    };
-    AccountingDepartment.prototype.addEmployee = function (name) {
+    }
+    describe() {
+        console.log(`Accounting Department — ID:\t\t${this.name}:\t(${this.id})`);
+    }
+    addEmployee(name) {
         if (name === 'Jasper') {
             return;
         }
         this.employees.push(name);
-    };
-    AccountingDepartment.prototype.printEmployeeInformation = function () {
-        console.log("No. of Employees:\t".concat(this.employees.length));
+    }
+    printEmployeeInformation() {
+        console.log(`No. of Employees:\t${this.employees.length}`);
         console.log(this.employees);
-    };
-    AccountingDepartment.prototype.addReport = function (text) {
+    }
+    addReport(text) {
         this.reports.push(text);
         this.lastReport = text;
-    };
-    AccountingDepartment.prototype.printReports = function () {
+    }
+    printReports() {
         console.log(this.reports);
-    };
-    return AccountingDepartment;
-}(Department));
-var accounting = AccountingDepartment.getInstance();
-var accounting2 = AccountingDepartment.getInstance();
+    }
+}
+const accounting = AccountingDepartment.getInstance();
+const accounting2 = AccountingDepartment.getInstance();
 console.log(accounting, accounting2);
-console.log("Are accounting and accounting2 the same?: ".concat(accounting === accounting2));
+console.log(`Are accounting and accounting2 the same?: ${accounting === accounting2}`);
 accounting.addEmployee('Max');
 accounting.addEmployee('Faddah');
 accounting.addEmployee('Darcy');

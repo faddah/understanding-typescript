@@ -1,7 +1,7 @@
-var buttons = document.querySelectorAll('.aButton');
-var buttonClick = function () {
-    buttons.forEach(function (button) {
-        button.addEventListener('click', function () {
+const buttons = document.querySelectorAll('.aButton');
+const buttonClick = () => {
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
             console.log('We clicked a Button!!');
         });
     });
