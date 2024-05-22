@@ -11,9 +11,24 @@ buttonClick();
 test();
 InputFieldFunc();
 function Logger(logString) {
+    console.log('LOGGER FACTORY');
     return function (constructor) {
         console.log(logString);
         console.log(constructor);
+    };
+}
+function WithTemplate(template, hookId) {
+    console.log('TEMPLATE FACTORY');
+    return function (orginalConstructor) {
+        return class extends orginalConstructor {
+            constructor(..._) {
+                super();
+                console.log('Rendering template...');
+                const hookElem = document.getElementById(hookId);
+                hookElem ? hookElem.innerHTML = template : console.log('No hook element found!');
+                hookElem.querySelector('h2').textContent = `My anotherPerson Object's name is:\t${this.name}`;
+            }
+        };
     };
 }
 let anotherPerson = class anotherPerson {
@@ -23,8 +38,82 @@ let anotherPerson = class anotherPerson {
     }
 };
 anotherPerson = __decorate([
-    Logger(`LOGGING - PERSON...`)
+    Logger(`LOGGING - PERSON...`),
+    WithTemplate('<h2>My Person Object</h2>', 'app')
 ], anotherPerson);
 const person1 = new anotherPerson();
 console.log(person1);
+function PropertyLogger(target, propertyName) {
+    console.log('Property decorator!');
+    console.log(target, propertyName);
+}
+function AccessorLogger(target, name, descriptor) {
+    console.log('Accessor decorator!');
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
+}
+const MethodDecorator = (target, name, descriptor) => {
+    console.log('Method decorator!');
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
+    return descriptor;
+};
+const ParameterDecorator = (target, methodName, position) => {
+    console.log('Parameter decorator!');
+    console.log(target);
+    console.log(methodName);
+    console.log(position);
+};
+class Product {
+    set price(val) {
+        val > 0 ? this._price = val : console.log('Invalid price - should be positive!');
+    }
+    constructor(t, p) {
+        this.title = t;
+        this._price = p;
+    }
+    getPriceWithTax(tax) {
+        return this._price * (1 + tax);
+    }
+}
+__decorate([
+    PropertyLogger
+], Product.prototype, "title", void 0);
+__decorate([
+    AccessorLogger
+], Product.prototype, "price", null);
+__decorate([
+    MethodDecorator
+], Product.prototype, "getPriceWithTax", null);
+const p1 = new Product('Book', 19);
+const p2 = new Product('Book Vol. 2', 29);
+function Autobind(_, _2, descriptor) {
+    const originalMethod = descriptor.value;
+    const adjDescriptor = {
+        configurable: true,
+        enumerable: false,
+        get() {
+            const boundFn = originalMethod.bind(this);
+            return boundFn;
+        }
+    };
+    return adjDescriptor;
+}
+class Printer {
+    constructor() {
+        this.message = 'This works!';
+    }
+    printMessage() {
+        console.log(this.message);
+    }
+}
+__decorate([
+    Autobind
+], Printer.prototype, "printMessage", null);
+const printer = new Printer();
+printer.printMessage();
+const button = document.querySelector('.aButton');
+button.addEventListener('click', printer.printMessage);
 //# sourceMappingURL=app.js.map
