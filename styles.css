@@ -80,3 +80,9 @@ button {
 #message-output {
 	height: 2.25rem;
 }
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
