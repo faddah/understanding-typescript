@@ -116,4 +116,66 @@ const printer = new Printer();
 printer.printMessage();
 const button = document.querySelector('.aButton');
 button.addEventListener('click', printer.printMessage);
+const registeredValidators = {};
+function Required(target, propName) {
+    registeredValidators[target.constructor.name] = {
+        ...registeredValidators[target.constructor.name],
+        [propName]: [...(registeredValidators[target.constructor.name]?.[propName] ?? []), 'required']
+    };
+}
+function PositiveNumber(target, propName) {
+    registeredValidators[target.constructor.name] = {
+        ...registeredValidators[target.constructor.name],
+        [propName]: [...(registeredValidators[target.constructor.name]?.[propName] ?? []), 'positive']
+    };
+}
+function Validate(obj) {
+    const objValidatorConfig = registeredValidators[obj.constructor.name];
+    if (!objValidatorConfig) {
+        return true;
+    }
+    let isValid = true;
+    for (const prop in objValidatorConfig) {
+        for (const validator of objValidatorConfig[prop]) {
+            switch (validator) {
+                case 'required':
+                    isValid = isValid && !!obj[prop];
+                    break;
+                case 'positive':
+                    isValid = isValid && obj[prop] > 0;
+                    break;
+            }
+        }
+    }
+    return isValid;
+}
+class Course {
+    constructor(t, p) {
+        this.title = t;
+        this.price = p;
+    }
+}
+__decorate([
+    Required
+], Course.prototype, "title", void 0);
+__decorate([
+    PositiveNumber
+], Course.prototype, "price", void 0);
+const courseForm = document.querySelector('form');
+console.log(courseForm);
+courseForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const titleElem = document.getElementById('title');
+    const priceElem = document.getElementById('price');
+    const title = titleElem.value;
+    const price = +priceElem.value;
+    const course = new Course(title, price);
+    if (!Validate(course)) {
+        alert('Invalid input, please try again!');
+        return;
+    }
+    console.log(course);
+    titleElem.value = '';
+    priceElem.value = '';
+});
 //# sourceMappingURL=app.js.map
