@@ -182,6 +182,7 @@ class ProjectInput {
 			alert('Invalid input, please try again!');
 			return;
 		} else {
+			console.log(enteredTitle, enteredDescription, +enteredPeople);
 			return [enteredTitle, enteredDescription, +enteredPeople];
 		}
 	}
