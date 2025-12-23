@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "serve -s .",
-    "run:test": "tsx src/typescript-tests.ts"
+    "examples": "tsx src/typescript-tests.ts"
   },
   "keywords": [],
   "author": "faddah wolf <my_biz@me.com> (https://github.com/faddah/)",
