@@ -13,10 +13,10 @@
   "license": "ISC",
   "dependencies": {
     "chalk-template": "^1.1.2",
-    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "serve": "^14.2.5"
+    "serve": "^14.2.5",
+    "tsx": "^4.21.0"
   }
 }
