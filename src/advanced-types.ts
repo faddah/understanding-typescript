@@ -5,7 +5,6 @@ buttonClick();
 test();
 
 const paragraph: HTMLParagraphElement | null = document.querySelector('p')!;
-const paraById: HTMLElement | null = document.getElementById('message-output')!;
 // TypeCasting — what's between the `<>` is forcing a TypeCasting
 // Version 1
 // const userInputElement: HTMLInputElement | null = <HTMLInputElement>document.getElementById('user-input')!;
